@@ -17,16 +17,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       
-      # Generates the snake files (full version)
       - name: Generate Snake
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
-            gif_out_path: dist/github-contribution-grid-snake.gif
-            svg_out_path: dist/github-contribution-grid-snake.svg
+            dist/github-snake.svg
+            dist/github-snake-dark.svg?palette=github-dark
+            dist/github-snake.gif
       
-      # Deploy to output branch
       - name: Deploy to output branch
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -34,6 +33,3 @@ jobs:
           publish_dir: ./dist
           publish_branch: output
           force_orphan: true
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          commit_message: 'Update snake animation'
